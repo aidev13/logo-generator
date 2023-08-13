@@ -1,4 +1,6 @@
 import inquirer from "inquirer"; 
+import fileSystem, { copyFileSync } from 'fs';
+import { getSVG } from "./utils/generatelogo.js";
 
 inquirer.prompt([
    //prompt for 3 charcters or less
@@ -34,8 +36,16 @@ inquirer.prompt([
     //create SVG file
         //output text in command line 'Generated logo.svg'
         //logo is generated @300x200px
-]).then((response) => {
-    console.log(response)
-})
+])
+ .then(response => {
+        const svgFile = getSVG(response)
+        fileSystem.writeFile(`./svg/${response.charc}.svg`, svgFile, err => {
+            if (err) {
+                throw err
+            }
+            console.log(`${response.charc}.md saved!`)
+        })
+    })
 .catch((err) => console.log(err))
+
 
