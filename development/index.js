@@ -1,9 +1,5 @@
 import inquirer from "inquirer"; 
 
-
-
-
-
 inquirer.prompt([
    //prompt for 3 charcters or less
     {
