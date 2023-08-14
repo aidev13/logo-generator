@@ -6,7 +6,8 @@ export const getSVG = (response) => {
 
 
     let { charc, txtColor, shape, shapeColor, x, y, r } = response
-    const usersShape = `${response.shape}`
+    const usersShape = `${shape}`
+
     if (usersShape === 'circle') {
         shape = circleRenderSVGcode;
     }
