@@ -1,6 +1,7 @@
 import inquirer from "inquirer"; 
-import fileSystem, { copyFileSync } from 'fs';
+import fileSystem from 'fs';
 import { getSVG } from "./utils/generatelogo.js";
+
 
 inquirer.prompt([
    //prompt for 3 charcters or less
@@ -14,10 +15,10 @@ inquirer.prompt([
     },
     //prompt for a txt color
     {
-        type: 'list',
+        type: 'input',
         name: 'txtColor',
         message: 'Pick a text color: ',
-        choices: ['red', 'blue', 'green', 'black', 'white']
+        // choices: ['red', 'blue', 'green', 'black', 'white']
     },
     //prompt for a shape
     {
@@ -28,22 +29,18 @@ inquirer.prompt([
     },
     //prompt for shapes color
     {
-        type: 'list',
+        type: 'input',
         name: 'shapeColor',
         message: 'Pick a shape color: ',
-        choices: ['red', 'blue', 'green']
+        // choices: ['red', 'blue', 'green']
     }
-    //create SVG file
-        //output text in command line 'Generated logo.svg'
-        //logo is generated @300x200px
+    
 ])
  .then(response => {
         const svgFile = getSVG(response)
         fileSystem.writeFile(`./svg/${response.charc}.svg`, svgFile, err => {
-            if (err) {
-                throw err
-            }
-            console.log(`${response.charc}.md saved!`)
+            if (err) {throw err}
+            console.log('Generated logo.svg')
         })
     })
 .catch((err) => console.log(err))
