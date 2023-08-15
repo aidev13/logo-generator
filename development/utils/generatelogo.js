@@ -2,7 +2,7 @@ import { circleRenderSVGcode } from "../lib/circle.js"
 import { squareRenderSVGcode } from "../lib/square.js"
 import { triangleRenderSVGcode } from "../lib/triangle.js"
 
-export const getSVG = (response) => {
+export const render = (response) => {
 
 
     let { charc, txtColor, shape, shapeColor, x, y, r } = response

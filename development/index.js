@@ -1,6 +1,6 @@
 import inquirer from "inquirer"; 
 import fileSystem from 'fs';
-import { getSVG } from "./utils/generatelogo.js";
+import { render } from "./utils/generatelogo.js";
 
 
 inquirer.prompt([
@@ -37,7 +37,7 @@ inquirer.prompt([
     
 ])
  .then(response => {
-        const svgFile = getSVG(response)
+        const svgFile = render(response)
         fileSystem.writeFile(`./svg/${response.charc}.svg`, svgFile, err => {
             if (err) {throw err}
             console.log('Generated logo.svg')
