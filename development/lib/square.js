@@ -2,8 +2,8 @@ import { Shape } from "./shapes.js"
 
 export class Square extends Shape {
 
-    constructor(shapeID, x, y, r, fillColor){
-        super(shapeID, x, y, r, fillColor)
+    constructor(shapeID, x, y, r){
+        super(shapeID, x, y, r)
     }
     
 }
